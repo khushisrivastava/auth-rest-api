@@ -7,7 +7,7 @@ SECRET_KEY = 'e@45uldk@fz!0d+q=m(0ntfv($^tmbu-0!td0knpng660v$17_'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'https://git.heroku.com/powerful-crag-82238.git',
+    'powerful-crag-82238.herokuapp.com',
     'localhost',
 ]
 
