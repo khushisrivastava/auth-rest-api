@@ -18,7 +18,7 @@ class AccountsTest(APITestCase):
             'password': 'somepassword',
         }
 
-        response = self.client.post(self.create_url , data, format='json')
+        response = self.client.post(self.create_url , data, format=None)
         self.assertEqual(User.objects.count(), 2)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data['username'], data['username'])
@@ -34,7 +34,7 @@ class AccountsTest(APITestCase):
                 'password': 'foo'
         }
 
-        response = self.client.post(self.create_url, data, format='json')
+        response = self.client.post(self.create_url, data, format=None)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(User.objects.count(), 1)
         self.assertEqual(len(response.data['password']), 1)
@@ -48,7 +48,7 @@ class AccountsTest(APITestCase):
                 'password': ''
         }
 
-        response = self.client.post(self.create_url, data, format='json')
+        response = self.client.post(self.create_url, data, format=None)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(User.objects.count(), 1)
         self.assertEqual(len(response.data['password']), 1)
@@ -62,7 +62,7 @@ class AccountsTest(APITestCase):
                 'password': 'foobar'
             }
 
-        response = self.client.post(self.create_url, data, format='json')
+        response = self.client.post(self.create_url, data, format=None)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(User.objects.count(), 1)
         self.assertEqual(len(response.data['username']), 1)
@@ -76,7 +76,7 @@ class AccountsTest(APITestCase):
                 'password': 'testuser'
             }
 
-        response = self.client.post(self.create_url, data, format='json')
+        response = self.client.post(self.create_url, data, format=None)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(User.objects.count(), 1)
         self.assertEqual(len(response.data['username']), 1)
@@ -90,7 +90,7 @@ class AccountsTest(APITestCase):
                 'password': 'testuser'
             }
 
-        response = self.client.post(self.create_url, data, format='json')
+        response = self.client.post(self.create_url, data, format=None)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(User.objects.count(), 1)
         self.assertEqual(len(response.data['email']), 1)
@@ -105,7 +105,7 @@ class AccountsTest(APITestCase):
         }
 
 
-        response = self.client.post(self.create_url, data, format='json')
+        response = self.client.post(self.create_url, data, format=None)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(User.objects.count(), 1)
         self.assertEqual(len(response.data['email']), 1)
@@ -119,7 +119,7 @@ class AccountsTest(APITestCase):
                 'password': 'foobarbaz'
         }
 
-        response = self.client.post(self.create_url, data, format='json')
+        response = self.client.post(self.create_url, data, format=None)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(User.objects.count(), 1)
         self.assertEqual(len(response.data['email']), 1)
