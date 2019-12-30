@@ -20,7 +20,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken',
+    #'rest_auth'
 ]
 
 MIDDLEWARE = [
@@ -86,7 +88,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'accounts.User'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+     'DEFAULT_PERMISSION_CLASSES': ( 
+         'rest_framework.permissions.IsAuthenticated',), 
+}
 
 
 # Internationalization

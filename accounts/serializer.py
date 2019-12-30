@@ -3,8 +3,6 @@ from rest_framework.validators import UniqueValidator
 from accounts.models import User
 
 class UserSerializer(serializers.ModelSerializer):
-    
-
     # def create(self, validated_data):
     #     user = User.objects.create_user(validated_data['username'], validated_data['email'], validated_data['password'],validated_data['first_name'], validated_data['last_name'])
     #     return user
@@ -14,4 +12,9 @@ class UserSerializer(serializers.ModelSerializer):
     username = serializers.CharField(required=True, validators=[UniqueValidator(queryset=User.objects.all())])
     class Meta:
         model = User
-        fields = ('id','first_name', 'last_name', 'username', 'phone', 'email', 'password')
+        fields = ('id','first_name', 'last_name', 'username', 'phone',  'email', 'password')
+
+class LoginSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'password')
