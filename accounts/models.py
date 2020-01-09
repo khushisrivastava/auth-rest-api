@@ -11,6 +11,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(db_index=True, max_length=100, unique=True)
     phone = models.CharField(db_index=True, max_length=10)
     email = models.EmailField(db_index=True, unique=True)
+    is_staff = models.BooleanField(default=True)
     #date_of_birth = models.DateTimeField(blank=True)
 
     objects = UserManager()
