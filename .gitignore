@@ -1,0 +1,5 @@
+# virtual environments
+env/
+
+# default database
+db.sqlite3
